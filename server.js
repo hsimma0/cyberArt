@@ -3,6 +3,7 @@ const express = require('express'); //Go to node module grab everything in expre
 const mongoose = require('mongoose');
 const app = express(); //activate express framework (by creating app and assigning the value by invoking the express variable)
 const PORT = 3030;
+const Art = require('./models/art.js');
 
 
 // DATABASE CONFIGURATION
@@ -21,6 +22,7 @@ db.on('connected', () => console.log('mongo connected'));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 // MOUNT MIDDLEWARE & BODY PARSER
+app.use(express.urlencoded({ extended:false}));
 
 // ROUTES (FULL CRUD)
 // app.get('/', function (req,res){
@@ -28,25 +30,52 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 // })
 
 // INDEX
-app.get('/',(req, res) => {
-    res.render('index.ejs')
-})
+app.get('/arts',(req, res) => {
+    Art.find({}, (error, foundArt) => {
+        res.send(foundArt)
+    });
+});
 
 // NEW
 
 
 // DELETE
+app.delete('/arts/:id', (req, res) => {
+    Art.findByIdAndDelete(req.params.id, (error, deletedArt) => {
+        res.send({ success: true});
+    });
+});
 
 
 // UPDATE
+app.put('/arts/:id', (req, res) => {
+    Art.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true},
+        (error, updatedArt) => {
+            res.send(updatedArt);
+        }
+    );
+});
 
 
 // CREATE
+app.post('/arts', (req, res) => {
+    Art.create(req.body, (error, createdArt) => {
+        res.send(createdArt)
+    });
+});
 
 
 // EDIT
 
 // SHOW
+app.get('/arts/:id', (req, res) => {
+    Art.findById(req.params.id, (error, foundArt) => {
+        res.send(foundArt)
+    });
+});
 
 // LISTENER
 app.listen( PORT, function(){
