@@ -1,0 +1,26 @@
+{
+  "name": "cyberart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hsimma0/cyberArt.git"
+  },
+  "author": "Herivin Simmasalam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hsimma0/cyberArt/issues"
+  },
+  "homepage": "https://github.com/hsimma0/cyberArt#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongodb": "^4.6.0"
+  }
+}
