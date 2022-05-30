@@ -32,12 +32,14 @@ app.use(express.urlencoded({ extended:false}));
 // INDEX
 app.get('/arts',(req, res) => {
     Art.find({}, (error, foundArt) => {
-        res.send(foundArt)
+        res.render('index.ejs')
     });
 });
 
 // NEW
-
+app.get('/arts/new', (req, res) => {
+    res.render('new.ejs')
+})
 
 // DELETE
 app.delete('/arts/:id', (req, res) => {
@@ -60,10 +62,17 @@ app.put('/arts/:id', (req, res) => {
 });
 
 
-// CREATE
+// CREATE (POST)
 app.post('/arts', (req, res) => {
+    
+    if(req.body.completed === 'on'){
+        req.body.completed = true;
+    } else {
+        req.body.completed = false;
+    }
+
     Art.create(req.body, (error, createdArt) => {
-        res.send(createdArt)
+        res.redirect('/arts')
     });
 });
 
@@ -73,7 +82,7 @@ app.post('/arts', (req, res) => {
 // SHOW
 app.get('/arts/:id', (req, res) => {
     Art.findById(req.params.id, (error, foundArt) => {
-        res.send(foundArt)
+        res.render('show.ejs')
     });
 });
 
