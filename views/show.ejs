@@ -8,6 +8,15 @@
 </head>
 <body>
     <h1>SHOW PAGE WORKING</h1>
-    <a href="/arts">Back To Index Page (Home Page)</a> 
+    <nav>
+        <a href="/arts">Back To Index Page</a> 
+    </nav>
+    <h1><%=Art.name %></h1>
+    <img src="<%=Art.image %>"> 
+    <h4>PRICE: $<%= Art.price%></h4>
+    <h4>QUANTITY: <%= Art.quantity%></h4>
+    <h4>DESCRIPTION: <%= Art.description%></h4>  
+    <a href="/arts/<%=Art._id %>/edit"><input type="button" value="EDIT"></a>
+    <input type="button" value="BUY NOW" />
 </body>
 </html>

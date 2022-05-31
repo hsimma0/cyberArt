@@ -1,18 +1,19 @@
 // DEPENDENCIES
 const express = require('express'); //Go to node module grab everything in express and assign to it "express" variables and it will have alll of the express functionality 
-const mongoose = require('mongoose');
-const app = express(); //activate express framework (by creating app and assigning the value by invoking the express variable)
-const PORT = 3030;
+const mongoose = require('mongoose');//activate express framework (by creating app and assigning the value by invoking the express variable)
+const app = express();
+require('dotenv').config();
 const Art = require('./models/art.js');
 const methodOverride = require('method-override');
 
 
+
+
 // DATABASE CONFIGURATION
-const DATABASE_URL="mongodb+srv://admin:abcd1234@cyberart.y8dna.mongodb.net/art?retryWrites=true&w=majority";
 const db = mongoose.connection;
 
 // DATABASE CONNECTION
-mongoose.connect(DATABASE_URL, {
+mongoose.connect(process.env.DATABASE_URL, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 });
@@ -23,19 +24,22 @@ db.on('connected', () => console.log('mongo connected'));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 // MOUNT MIDDLEWARE & BODY PARSER
-app.use(express.urlencoded({ extended:false}));
+app.use(express.urlencoded({ extended: true}));
 app.use(methodOverride('_method'));
 
 // ROUTES (FULL CRUD)
-// app.get('/', function (req,res){
-//     res.send('Andre is listening to the World')
-// })
+app.get('/seed', (req, res) => {
+    Art.deleteMany({}, (error, allArts) => {});
+    Art.create(artSeed, (error, data) => {
+        res.redirect('arts');
+    });
+});
 
 // INDEX
 app.get('/arts',(req, res) => {
-    Art.find({}, (error, foundArt) => {
+    Art.find({}, (error, allArts) => {
         res.render('index.ejs', {
-            Art: foundArt,
+            Art: allArts,
         });
     });
 });
@@ -54,27 +58,19 @@ app.delete('/arts/:id', (req, res) => {
 
 
 // UPDATE
-app.put('/arts/:id', (req, res) => {
-    if (req.body.updatedArt === 'on'){
-        req.body.updatedArt = true
-    } else {
-        req.body.updatedArt = false
-    }
-    arts[req.params.id] = req.body
-    res.redirect('arts')
-});
+app.put("/arts/:id", (req, res) => {
+    Art.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+      },
+      (error, updatedArt) => {
+        res.redirect(`/arts/${req.params.id}`)
+      }
+    )
+  });
     
-//     Art.findByIdAndUpdate(
-//         req.params.id,
-//         req.body,
-//         { new: true},
-//         (error, updatedArt) => {
-//             res.send(updatedArt);
-//         }
-//     );
-// });
-
-
 // CREATE (POST)
 app.post('/arts', (req, res) => {
     
@@ -92,20 +88,22 @@ app.post('/arts', (req, res) => {
 
 // EDIT
 app.get('/arts/:id/edit', (req,res) => {
-    res.render('edit.ejs', {
-        art: arts[req.params.id],
-        index: req.params.id,
+    Art.findById(req.params.id, (error, foundArt) => {
+        res.render('edit.ejs', {
+            Art: foundArt,
+        })
     })
 })
 
 // SHOW
 app.get('/arts/:id', (req, res) => {
     Art.findById(req.params.id, (error, foundArt) => {
-        res.render('show.ejs')
+        res.render('show.ejs', {
+            art: foundArt,
+        });
     });
 });
 
 // LISTENER
-app.listen( PORT, function(){
-    console.log("Andre is listening to", PORT)
-})
+const PORT = process.env.PORT;
+app.listen(PORT, () => console.log(`Andre is listening to, ${PORT}`));

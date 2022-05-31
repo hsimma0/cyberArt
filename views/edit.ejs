@@ -8,15 +8,15 @@
 </head>
 <body>
     <h1>EDIT PAGE WORKING</h1>
-    <form action="/arts/<%= art._id%>?_method=PUT" method="POST"> 
-        Name: <input type="text" name="Name" value="<%=art.name%>" /><br />
-        Description:  <input type="text" name="Description" value="<%=art.description%>" /><br />
-        Rarity:  <input type="text" name="Rarity" value="<%=art.rarity%>" /><br />
-        Image:  <input type="img" name="Image" value="<%=art.image%>" /><br />
-        Price:  <input type="number" name="Price" value="<%=art.price%>" /><br />
-        Quantity:  <input type="number" name="Quantity" value="<%=art.quantity%>" /><br />
+    <form action="/arts/<%=Art._id%>?_method=PUT" method="POST"> 
+        Name: <input type="text" name="Name" value="<%=Art.name%>" /><br />
+        Description:  <input type="text" name="Description" value="<%=Art.description%>" /><br />
+        Rarity:  <input type="text" name="Rarity" value="<%=Art.rarity%>" /><br />
+        Image:  <input type="img" name="Image" value="<%=Art.image%>" /><br />
+        Price:  <input type="number" name="Price" value="<%=Art.price%>" /><br />
+        Quantity:  <input type="number" name="Quantity" value="<%=Art.quantity%>" /><br />
         <br />
-        <input type="Submit" value="Submit Changes">
+        <input type="submit" value="Commit Changes">
     </form>
     <a href="/arts">Back To Index Page (Home Page)</a>
 </body>
