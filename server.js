@@ -1,12 +1,10 @@
 // DEPENDENCIES
 const express = require('express'); //Go to node module grab everything in express and assign to it "express" variables and it will have alll of the express functionality 
-const mongoose = require('mongoose');//activate express framework (by creating app and assigning the value by invoking the express variable)
-const app = express();
-require('dotenv').config();
 const Art = require('./models/art.js');
+const mongoose = require('mongoose');
+const app = express(); //activate express framework (by creating app and assigning the value by invoking the express variable)
 const methodOverride = require('method-override');
-
-
+require('dotenv').config();
 
 
 // DATABASE CONFIGURATION
@@ -34,12 +32,11 @@ app.get('/seed', (req, res) => {
         res.redirect('arts');
     });
 });
-
 // INDEX
 app.get('/arts',(req, res) => {
-    Art.find({}, (error, allArts) => {
+    Art.find({}, (error, foundArt) => {
         res.render('index.ejs', {
-            Art: allArts,
+            Art: foundArt,
         });
     });
 });
