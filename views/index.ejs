@@ -10,13 +10,13 @@
 <body>
     <ul>
         <% Art.forEach(Art => { %>
-                <a href="/arts/<%= Art._id; %>"> </br>
-                    <img src="<%=Art.img%>" /></a>
-                    <a> PRICE: $<%=Art.price; %></a>
-                    <a> RARITY: <%= Art.rarity; %></a>
-                <form  action="/arts/<%= Art.id %>?_method=DELETE" method="POST">
-                    <input type="submit" value="DELETE" />
-                </form>
+                <a href="/arts/<%= Art._id; %>"> 
+                    <img src="<%=Art.Image%>" alt="Picture" /></a>
+                    <a> PRICE: $<%=Art.Price; %></a>
+                    <a> RARITY: <%= Art.Rarity; %></a>
+                    <a> QUANTITY: <%= Art.Quantity; %></a>
+                
+                
                 <a href="/arts/<%= Art._id; %>/edit"><input type="button" value="EDIT ART"></a> </br>
                <% }) %>    
       </ul>

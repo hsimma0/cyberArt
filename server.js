@@ -1,8 +1,9 @@
 // DEPENDENCIES
 const express = require('express'); //Go to node module grab everything in express and assign to it "express" variables and it will have alll of the express functionality 
-const Art = require('./models/art.js');
-const mongoose = require('mongoose');
 const app = express(); //activate express framework (by creating app and assigning the value by invoking the express variable)
+const Art = require('./models/art.js');
+const artSeed = require('./models/artSeed.js');
+const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 require('dotenv').config();
 
@@ -96,8 +97,22 @@ app.get('/arts/:id/edit', (req,res) => {
 app.get('/arts/:id', (req, res) => {
     Art.findById(req.params.id, (error, foundArt) => {
         res.render('show.ejs', {
-            art: foundArt,
+            Art: foundArt,
         });
+    });
+});
+
+//BUY
+app.post('/arts/:id/buy',(req, res) => {
+    Art.findById(req.params.id, (err, boughtArt) => {
+        if(boughtArt.Quantity) {
+            boughtArt.Quantity--
+            boughtArt.save(() => {
+    res.redirect(`/arts/${boughtArt._id}`);
+            });
+        } else {
+    res.redirect(`/arts/${boughtArt._id}`);
+        }
     });
 });
 
