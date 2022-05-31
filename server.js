@@ -1,12 +1,11 @@
 // DEPENDENCIES
 const express = require('express'); //Go to node module grab everything in express and assign to it "express" variables and it will have alll of the express functionality 
 const app = express(); //activate express framework (by creating app and assigning the value by invoking the express variable)
-const Art = require('./models/art.js');
 const artSeed = require('./models/artSeed.js');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 require('dotenv').config();
-
+const artsController = require('./controllers/arts');
 
 // DATABASE CONFIGURATION
 const db = mongoose.connection;
@@ -26,95 +25,8 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 app.use(express.urlencoded({ extended: true}));
 app.use(methodOverride('_method'));
 
-// ROUTES (FULL CRUD)
-app.get('/seed', (req, res) => {
-    Art.deleteMany({}, (error, allArts) => {});
-    Art.create(artSeed, (error, data) => {
-        res.redirect('arts');
-    });
-});
-// INDEX
-app.get('/arts',(req, res) => {
-    Art.find({}, (error, foundArt) => {
-        res.render('index.ejs', {
-            Art: foundArt,
-        });
-    });
-});
-
-// NEW
-app.get('/arts/new', (req, res) => {
-    res.render('new.ejs')
-})
-
-// DELETE
-app.delete('/arts/:id', (req, res) => {
-    Art.findByIdAndDelete(req.params.id, (error, deletedArt) => {
-        res.redirect('/arts');
-    });
-});
-
-
-// UPDATE
-app.put("/arts/:id", (req, res) => {
-    Art.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      {
-        new: true,
-      },
-      (error, updatedArt) => {
-        res.redirect(`/arts/${req.params.id}`)
-      }
-    )
-  });
-    
-// CREATE (POST)
-app.post('/arts', (req, res) => {
-    
-    if(req.body.completed === 'on'){
-        req.body.completed = true;
-    } else {
-        req.body.completed = false;
-    }
-
-    Art.create(req.body, (error, createdArt) => {
-        res.redirect('/arts');
-    });
-});
-
-
-// EDIT
-app.get('/arts/:id/edit', (req,res) => {
-    Art.findById(req.params.id, (error, foundArt) => {
-        res.render('edit.ejs', {
-            Art: foundArt,
-        })
-    })
-})
-
-// SHOW
-app.get('/arts/:id', (req, res) => {
-    Art.findById(req.params.id, (error, foundArt) => {
-        res.render('show.ejs', {
-            Art: foundArt,
-        });
-    });
-});
-
-//BUY
-app.post('/arts/:id/buy',(req, res) => {
-    Art.findById(req.params.id, (err, boughtArt) => {
-        if(boughtArt.Quantity) {
-            boughtArt.Quantity--
-            boughtArt.save(() => {
-    res.redirect(`/arts/${boughtArt._id}`);
-            });
-        } else {
-    res.redirect(`/arts/${boughtArt._id}`);
-        }
-    });
-});
+// CONTROLLER MIDDLEWARE
+app.use('/arts', artsController);
 
 // LISTENER
 const PORT = process.env.PORT;
