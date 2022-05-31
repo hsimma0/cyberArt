@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const app = express(); //activate express framework (by creating app and assigning the value by invoking the express variable)
 const PORT = 3030;
 const Art = require('./models/art.js');
+const methodOverride = require('method-override');
 
 
 // DATABASE CONFIGURATION
@@ -23,6 +24,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 
 // MOUNT MIDDLEWARE & BODY PARSER
 app.use(express.urlencoded({ extended:false}));
+app.use(methodOverride('_method'));
 
 // ROUTES (FULL CRUD)
 // app.get('/', function (req,res){
@@ -32,7 +34,9 @@ app.use(express.urlencoded({ extended:false}));
 // INDEX
 app.get('/arts',(req, res) => {
     Art.find({}, (error, foundArt) => {
-        res.render('index.ejs')
+        res.render('index.ejs', {
+            Art: foundArt,
+        });
     });
 });
 
@@ -44,22 +48,31 @@ app.get('/arts/new', (req, res) => {
 // DELETE
 app.delete('/arts/:id', (req, res) => {
     Art.findByIdAndDelete(req.params.id, (error, deletedArt) => {
-        res.send({ success: true});
+        res.redirect('/arts');
     });
 });
 
 
 // UPDATE
 app.put('/arts/:id', (req, res) => {
-    Art.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        { new: true},
-        (error, updatedArt) => {
-            res.send(updatedArt);
-        }
-    );
+    if (req.body.updatedArt === 'on'){
+        req.body.updatedArt = true
+    } else {
+        req.body.updatedArt = false
+    }
+    arts[req.params.id] = req.body
+    res.redirect('arts')
 });
+    
+//     Art.findByIdAndUpdate(
+//         req.params.id,
+//         req.body,
+//         { new: true},
+//         (error, updatedArt) => {
+//             res.send(updatedArt);
+//         }
+//     );
+// });
 
 
 // CREATE (POST)
@@ -72,12 +85,18 @@ app.post('/arts', (req, res) => {
     }
 
     Art.create(req.body, (error, createdArt) => {
-        res.redirect('/arts')
+        res.redirect('/arts');
     });
 });
 
 
 // EDIT
+app.get('/arts/:id/edit', (req,res) => {
+    res.render('edit.ejs', {
+        art: arts[req.params.id],
+        index: req.params.id,
+    })
+})
 
 // SHOW
 app.get('/arts/:id', (req, res) => {

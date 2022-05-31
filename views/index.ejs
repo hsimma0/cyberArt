@@ -9,11 +9,20 @@
 </head>
 <body>
     <h1>"Hello Its Andre"</h1>
-    <form>
-        <input type = "button" value="+">
-        <input type = "submit" value="-">
-    </form>
     <a href="/arts">Back To Index Page (Home Page)</a>
-    <a href="/arts/new">Create A New Art</a>
+    <ul>
+        <% Art.forEach(Art => { %>
+                <a href="/arts/<%= Art._id; %>"> </br>
+                <form  action="/arts/<%= Art.id %>?_method=DELETE" method="POST" style="display:inline; margin-left:16px;">
+                    <input type="submit" value="DELETE" />
+                </form>
+                <a href="/arts/<%= Art._id; %>/edit">Edit Art</a>
+               <% }) %>    
+      </ul>
+   
+    <nav>
+        <a href="/arts/new">Create A New Art</a>
+    </nav>
+
 </body>
 </html>
