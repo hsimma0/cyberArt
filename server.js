@@ -31,6 +31,11 @@ app.use('/public', express.static('public'));
 // CONTROLLER MIDDLEWARE
 app.use('/arts',artsController);
 
+// TEST HEROKU DEPLOY
+app.get('/', (req,res) => {
+	res.redirect('/arts')
+})
+
 // LISTENER
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Andre is listening to, ${PORT}`));
