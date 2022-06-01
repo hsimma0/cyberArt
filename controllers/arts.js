@@ -1,6 +1,6 @@
 // DEPENDENCIES
 const express = require('express');
-const Art = require ('../models/art') 
+const Art = require ('../models/art');
 
 // INITIALIZE THE ROUTER OBJECT
 const router = express.Router();

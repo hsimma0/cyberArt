@@ -25,6 +25,9 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 app.use(express.urlencoded({ extended: true}));
 app.use(methodOverride('_method'));
 
+// CSS
+app.use('/public', express.static('public'));
+
 // CONTROLLER MIDDLEWARE
 app.use('/arts',artsController);
 
