@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 require('dotenv').config();
 const artsController = require('./controllers/arts');
+MONGODB_URI="mongodb+srv://admin:abcd1234@cyberart.y8dna.mongodb.net/?retryWrites=true&w=majority"
 
 // DATABASE CONFIGURATION
 const db = mongoose.connection;
@@ -26,7 +27,7 @@ app.use(express.urlencoded({ extended: true}));
 app.use(methodOverride('_method'));
 
 // CONTROLLER MIDDLEWARE
-app.use('/arts', artsController);
+app.use('/arts',artsController);
 
 // LISTENER
 const PORT = process.env.PORT;
