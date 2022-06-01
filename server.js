@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 require('dotenv').config();
 const artsController = require('./controllers/arts');
-MONGODB_URI="mongodb+srv://admin:abcd1234@cyberart.y8dna.mongodb.net/?retryWrites=true&w=majority"
 
 // DATABASE CONFIGURATION
 const db = mongoose.connection;
