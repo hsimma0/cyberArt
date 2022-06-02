@@ -1,0 +1,11 @@
+body{
+    background-image: url("https://i.pinimg.com/originals/06/95/97/069597afb049e35d90c591fd81d793fe.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 600px;
+}
+
+.main-box{
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+}

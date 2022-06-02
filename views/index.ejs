@@ -4,7 +4,7 @@
 <footer style="background: aquamarine;"">
     <div class="box">
         <nav>
-            <a href="/arts/new">Create A New Art</a>
+                <a href="/arts/new">Create A New Art</a>
         </nav>
     </div>    
 </footer>
@@ -15,17 +15,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/index.css">
     <link rel="stylesheet" href="/public/skeleton.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>cyberArt</title> 
 </head>
 
 <body>
     <ul>
         <% Art.forEach(Art => { %>
-            <div class="container">
+            <div class="container-fluid">
                 <a href="/arts/<%= Art._id; %>"> 
                 <div class="row">
-                    <img src="<%=Art.Image%>" alt="Picture" /></a>
+                    <div class="col-md-1">
+                        <img src="<%=Art.Image%>" alt="Picture" /></a>
+                    </div>
                 </div>
+            </div>
                     <!-- <a> PRICE: $<%=Art.Price; %></a>
                     <a> RARITY: <%= Art.Rarity; %></a>
                     <a> QUANTITY: <%= Art.Quantity; %></a>              

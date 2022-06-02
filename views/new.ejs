@@ -6,18 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/new.css">
     <link rel="stylesheet" href="/public/skeleton.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>NEW PAGE</title>
+    
+    <footer style="background: aquamarine;">
+        <nav>
+            <a href="/arts">Back To Index Page</a> 
+        </nav>
+    </footer>
+
 </head>
 <body>
-    <h1>NEW PAGE WORKING</h1>
-    <form action="/arts" method="POST">
-        Name: <input type="text" name="Name" /><br />
-        Description:  <input type="text" name="Description" /><br />
-        Rarity:  <input type="text" name="Rarity" /><br />
-        Image:  <input type="img" name="Image" /><br />
-        Price:  <input type="number" name="Price" /><br />
-        Quantity:  <input type="number" name="Quantity" /><br />
-        <input type="Submit" value="Create Digital Art">
-    </form>
+    <div class="main-box">
+        <form action="/arts" method="POST">
+            Name: <input type="text" name="Name" /><br />
+            Description:  <input type="text" name="Description" /><br />
+            Rarity:  <input type="text" name="Rarity" /><br />
+            Image:  <input type="img" name="Image" /><br />
+            Price:  <input type="number" name="Price" /><br />
+            Quantity:  <input type="number" name="Quantity" /><br />
+            <input type="Submit" value="Create Digital Art">
+        </form>
+    </div>
+    
 </body>
+
+<footer style="background: aquamarine;">
+    <p>Copyright © 2022 All Rights Reserved</a></p>
+</footer>
+
 </html>

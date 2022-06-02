@@ -2,7 +2,16 @@ body{
     background-image: url(https://c.tenor.com/M5iwvGvTK3oAAAAC/90s-anime-aesthetic.gif);
     background-repeat: no-repeat;
     background-position: center;
-    background-size:auto;
+    background-size:800px;
+}
+
+.main-box{
+text-align: center;
+font-family: 'Press Start 2P', cursive;
+}
+
+footer{
+    text-align: center;
 }
 
 img {
@@ -12,16 +21,20 @@ img {
     padding: 5px;
     
 }
- .container{
-     display: flex;
-     flex-direction: auto;
+ .container-fluid{
+     display:grid;
+     flex-direction: row;
      column-gap: 5px;
      row-gap: 5px;
      font-family: 'Gameplay', sans-serif;
-     text-align: center;
  };
 
-.box{
-    background-color: aqua;
-}
-
+ .row.three.columns{
+     width: auto;
+ }
+/* ITEMS POSITION */
+/* .wrapper{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+} */
