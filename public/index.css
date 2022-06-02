@@ -4,6 +4,7 @@ body{
     background-position: center;
     background-size:auto;
 }
+
 img {
     width: 100px;
     height:100px;
@@ -18,13 +19,9 @@ img {
      row-gap: 5px;
      font-family: 'Gameplay', sans-serif;
      text-align: center;
- }
+ };
 
- footer{
-     background-color: aliceblue;
- }
+.box{
+    background-color: aqua;
+}
 
- /* Button */
- /* From uiverse.io by @barisdogansutcu */
-
-   
