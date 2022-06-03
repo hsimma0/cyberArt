@@ -3,9 +3,41 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     background-size: 600px;
+    background-color:white;
 }
 
 .main-box{
     text-align: center;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Gameplay', sans-serif;
+    text-shadow: 2px 2px 2px white; //width, placement, yx
+}
+
+.main-info{
+    
+    text-shadow: 2px 2px 2px white; //width, placement, yx
+}
+
+
+
+.main-buttons{
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Gameplay', sans-serif;
+}
+
+footer{
+font-family: 'Gameplay', sans-serif;
+text-align: center;
+text-shadow: 2px 2px 2px white; //width, placement, yx
+}
+
+.artName{
+    padding: 2%;
+    text-align:center;
+    text-shadow: 8px 10px 3px white;
+}
+
+.artImage{
+    padding: 1%;
 }

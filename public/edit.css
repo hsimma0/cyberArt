@@ -1,11 +1,29 @@
 body{
-    background-image: url(https://c.tenor.com/M5iwvGvTK3oAAAAC/90s-anime-aesthetic.gif);
+    background-image: url(https://64.media.tumblr.com/64ebbae5edcedcb229b68e5448bff90c/tumblr_p62owx29KR1x6a7yto1_540.gifv);
     background-repeat: no-repeat;
     background-position: center;
-    background-size:800px;
+    background-size:600px;
+    background-color:white;
 }
 
 .main-box{
+    padding:8%;
     text-align: center;
-    font-family: 'Press Start 2P', cursive;
+    justify-content: space-evenly;
+    font-family: 'Gameplay', sans-serif;
+    text-shadow: 2px 2px 2px white; //width, placement, yx
+}
+
+footer{
+    font-family: 'Gameplay', sans-serif;
+    text-align: center;
+    text-shadow: 2px 2px 2px white; //width, placement, yx
+}
+
+.editBox{
+    align-items: baseline;
+}
+
+.commitArt{
+    text-align:center;
 }

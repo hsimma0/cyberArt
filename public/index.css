@@ -1,40 +1,43 @@
 body{
-    background-image: url(https://c.tenor.com/M5iwvGvTK3oAAAAC/90s-anime-aesthetic.gif);
+    background-image: url(https://monophy.com/media/BRN2Xi0MqnjjO/monophy.gif);
     background-repeat: no-repeat;
     background-position: center;
     background-size:800px;
+    background-color:white;
 }
 
 .main-box{
 text-align: center;
-font-family: 'Press Start 2P', cursive;
-}
-
-footer{
-    text-align: center;
+font-family: 'Gameplay', sans-serif;
+text-shadow: 2px 2px 2px white; //width, placement, yx
 }
 
 img {
     width: 100px;
     height:100px;
     border: 5px solid black;
-    padding: 5px;
-    
+    padding: 5px;    
 }
- .container-fluid{
-     display:grid;
-     flex-direction: row;
-     column-gap: 5px;
-     row-gap: 5px;
-     font-family: 'Gameplay', sans-serif;
- };
 
- .row.three.columns{
-     width: auto;
+ .flex-container{
+     display:flex;
+     flex-wrap: wrap;
+     justify-content:space-between;
+     padding: 10%;
  }
-/* ITEMS POSITION */
-/* .wrapper{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 10px;
-} */
+
+ footer{
+     font-family: 'Gameplay', sans-serif;
+     text-align: center;
+     text-shadow: 2px 2px 2px white; //width, placement, yx
+ }
+
+ .container{
+     color: black;
+ }
+
+ .text{
+     font-family:'Gameplay', sans-serif;
+     text-align: center;
+     text-shadow: 5px 5px 5px white; //width, placement, yx
+ }

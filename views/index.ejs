@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <!-- Footer -->
-<footer style="background: aquamarine;"">
+<footer style="background: #E2CD6D;"">
     <div class="box">
         <nav>
                 <a href="/arts/new">Create A New Art</a>
@@ -10,39 +10,48 @@
 </footer>
  
 <head>
+    <div class="text">
+    <h2> Buy, Sell, and Discover Exclusive Digital Art.</h2>
+    <h4>This is an open space for all artist to promote and sell their NFT collections worldwide. </h4>
+    </div>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/index.css">
-    <link rel="stylesheet" href="/public/skeleton.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="/public/skeleton.css"> -->
+    <link href="http://fonts.cdnfonts.com/css/gameplay" rel="stylesheet">
     <title>cyberArt</title> 
 </head>
 
 <body>
     <ul>
+        <div class="flex-container">
         <% Art.forEach(Art => { %>
-            <div class="container-fluid">
-                <a href="/arts/<%= Art._id; %>"> 
-                <div class="row">
-                    <div class="col-md-1">
-                        <img src="<%=Art.Image%>" alt="Picture" /></a>
-                    </div>
-                </div>
-            </div>
+            <a href="/arts/<%= Art._id; %>">
+            <img src="<%=Art.Image%>" alt="Picture" /></a>
+        
                     <!-- <a> PRICE: $<%=Art.Price; %></a>
                     <a> RARITY: <%= Art.Rarity; %></a>
                     <a> QUANTITY: <%= Art.Quantity; %></a>              
                 <a href="/arts/<%= Art._id; %>/edit"><input type="button" value="EDIT ART"></a> </br> -->
-               <% }) %>    
-            </div>
+        <% }) %> 
+        </div>   
       </ul>
 
-    <footer style="background: aquamarine;">
+    <footer style="background: #E2CD6D;">
         <p>Copyright © 2022 All Rights Reserved</a></p>
+    </footer>
+
+    <footer style="background: #E2CD6D;">
+        <div class="container" id="socialArt">
+            <span><a href="https://twitter.com/hervsimma"><i class="fab fa-twitter"></i></a></span>
+            <span><a href="https://instagram.com/hervv?igshid=YmMyMTA2M2Y="><i class="fab fa-instagram"></i></a></span>
+            <span><a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a></span>
+            <span><a href="https://www.youtube.com/watch?v=SSo_EIwHSd4"><i class="fab fa-youtube"></i></a></span>
+        </div>
     </footer>
 
 </body>
 </html>
+

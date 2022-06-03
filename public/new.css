@@ -1,11 +1,26 @@
 body{
-    background-image: url("https://i.pinimg.com/originals/06/95/97/069597afb049e35d90c591fd81d793fe.gif");
+    background-image: url("https://c.tenor.com/W8ajHdMwbdUAAAAC/retro-anime-sleep.gif");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 400px;
+    background-attachement: fixed;
+    background-size: 650px;
+    background-color:white;
 }
 
 .main-box{
+    padding: 10%;
     text-align: center;
-    font-family: 'Press Start 2P', cursive;
+    justify-content: space-evenly;
+    font-family: 'Gameplay', sans-serif;
+    text-shadow: 2px 2px 2px white; //width, placement, yx
+}
+
+footer{
+    font-family: 'Gameplay', sans-serif;
+    text-align: center;
+    text-shadow: 2px 2px 2px white; //width, placement, yx
+}
+
+.createArt{
+text-align: center;
 }
